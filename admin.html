@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Hon. Akarachi Amadi</title>
+
+<style>
+:root {
+  --green: #08783e;
+  --dark: #04552d;
+  --gold: #d6a928;
+  --light: #f4f7f4;
+  --white: #ffffff;
+  --text: #26332b;
+  --muted: #6b786e;
+  --border: #e1e8e2;
+  --danger: #c0392b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: var(--text);
+}
+
+/* LOGIN */
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--dark), var(--green));
+}
+
+.login-box {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.2);
+}
+
+.login-box h1 {
+  text-align: center;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.login-box p {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.login-box input {
+  margin-bottom: 15px;
+}
+
+.login-note {
+  font-size: 12px !important;
+  margin-top: 15px;
+}
+
+/* GENERAL */
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--green);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  margin: 15px 0 7px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 11px 17px;
+  font-size: 13px;
+}
+
+.primary-btn {
+  background: var(--green);
+  color: white;
+}
+
+.primary-btn:hover {
+  background: var(--dark);
+}
+
+.gold-btn {
+  background: var(--gold);
+  color: #183322;
+}
+
+.danger-btn {
+  background: var(--danger);
+  color: white;
+}
+
+.secondary-btn {
+  background: #e8eee9;
+  color: var(--dark);
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.message {
+  font-size: 13px;
+  margin-top: 12px;
+  color: var(--danger);
+}
+
+/* DASHBOARD LAYOUT */
+
+.dashboard {
+  display: none;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: var(--dark);
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  padding: 25px 15px;
+  z-index: 100;
+}
+
+.brand {
+  text-align: center;
+  padding: 10px 5px 25px;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  margin-bottom: 20px;
+}
+
+.brand h2 {
+  font-size: 19px;
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+.brand p {
+  font-size: 11px;
+  margin-top: 7px;
+  color: #dce8df;
+}
+
+.sidebar button {
+  width: 100%;
+  display: block;
+  text-align: left;
+  background: transparent;
+  color: white;
+  padding: 13px;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.sidebar button:hover,
+.sidebar button.active {
+  background: rgba(255,255,255,.14);
+  color: var(--gold);
+}
+
+.sidebar .logout {
+  margin-top: 25px;
+  color: #ffd1cb;
+}
+
+.main {
+  margin-left: 250px;
+  min-height: 100vh;
+}
+
+.topbar {
+  background: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+.topbar h2 {
+  color: var(--dark);
+  font-size: 21px;
+}
+
+.topbar p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.admin-badge {
+  background: #e5f4e9;
+  color: var(--green);
+  padding: 9px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 30px;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.section-title {
+  margin-bottom: 22px;
+}
+
+.section-title h2 {
+  color: var(--dark);
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* OVERVIEW */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 23px;
+  border-radius: 9px;
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+}
+
+.stat-card h3 {
+  font-size: 26px;
+  color: var(--green);
+}
+
+.stat-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.panel {
+  background: white;
+  border-radius: 9px;
+  padding: 25px;
+  margin-bottom: 22px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+}
+
+.panel h3 {
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+.notice {
+  background: #fff8e5;
+  border-left: 4px solid var(--gold);
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 13px;
+  color: #66501c;
+  margin-bottom: 20px;
+}
+
+/* FORMS */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 20px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+/* TABLES */
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+th, td {
+  padding: 13px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 13px;
+}
+
+th {
+  background: #f2f7f3;
+  color: var(--dark);
+}
+
+td button {
+  margin: 3px;
+}
+
+/* IMAGE PREVIEW */
+
+.image-preview {
+  width: 100%;
+  max-width: 220px;
+  max-height: 150px;
+  object-fit: cover;
+  display: none;
+  margin-top: 12px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1000px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 750px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    bottom: auto;
+  }
+
+  .sidebar button {
+    display: inline-block;
+    width: auto;
+    margin: 3px;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .brand {
+    padding-bottom: 15px;
+  }
+
+  .content {
+    padding: 18px;
+  }
+
+  .topbar {
+    padding: 17px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full {
+    grid-column: auto;
+  }
+}
+
+@media(max-width: 450px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN SCREEN -->
+
+<div class="login-screen" id="loginScreen">
+
+  <div class="login-box">
+
+    <h1>Admin Login</h1>
+
+    <p>Hon. Akarachi Amadi Official Website</p>
+
+    <form id="loginForm">
+
+      <label>Email Address</label>
+      <input
+        type="email"
+        id="loginEmail"
+        placeholder="Enter admin email"
+        required
+      >
+
+      <label>Password</label>
+      <input
+        type="password"
+        id="loginPassword"
+        placeholder="Enter password"
+        required
+      >
+
+      <button type="submit" class="primary-btn full-btn">
+        Login to Dashboard
+      </button>
+
+      <div class="message" id="loginMessage"></div>
+
+    </form>
+
+    <p class="login-note">
+      Demonstration login only. Replace with secure authentication
+      before publishing this website.
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- MAIN DASHBOARD -->
+
+<div class="dashboard" id="dashboard">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <h2>HON. <span>AKARACHI AMADI</span></h2>
+      <p>WEBSITE ADMINISTRATION</p>
+    </div>
+
+    <button class="active" data-section="overview">
+      📊 Overview
+    </button>
+
+    <button data-section="biography">
+      👤 Biography
+    </button>
+
+    <button data-section="projects">
+      🏗️ Projects
+    </button>
+
+    <button data-section="vision">
+      🎯 Vision & Mission
+    </button>
+
+    <button data-section="news">
+      📰 News & Updates
+    </button>
+
+    <button data-section="gallery">
+      📷 Photo Gallery
+    </button>
+
+    <button data-section="messages">
+      ✉️ Messages
+    </button>
+
+    <button data-section="settings">
+      ⚙️ Website Settings
+    </button>
+
+    <button class="logout" id="logoutBtn">
+      🚪 Logout
+    </button>
+
+  </aside>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h2 id="pageTitle">Dashboard Overview</h2>
+        <p>Manage your official website content.</p>
+      </div>
+
+      <div class="admin-badge">Administrator</div>
+    </div>
+
+
+    <div class="content">
+
+
+      <!-- OVERVIEW -->
+
+      <section class="section active" id="overview">
+
+        <div class="section-title">
+          <h2>Welcome to Your Dashboard</h2>
+          <p>Manage website content and updates from one place.</p>
+        </div>
+
+        <div class="notice">
+          Demo mode: changes made here are temporary and will not
+          survive a page refresh. Supabase integration will provide
+          secure login, permanent storage and real uploads later.
+        </div>
+
+        <div class="stats">
+
+          <div class="stat-card">
+            <h3 id="projectCount">0</h3>
+            <p>Projects Added</p>
+          </div>
+
+          <div class="stat-card">
+            <h3 id="newsCount">0</h3>
+            <p>News Articles</p>
+          </div>
+
+          <div class="stat-card">
+            <h3 id="photoCount">0</h3>
+            <p>Gallery Photos</p>
+          </div>
+
+          <div class="stat-card">
+            <h3 id="messageCount">0</h3>
+            <p>Messages Received</p>
+          </div>
+
+        </div>
+
+        <div class="panel">
+          <h3>Website Management</h3>
+          <p>
+            Use the navigation menu to manage projects, news,
+            photographs, biography, vision and mission, messages
+            and general website information.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Important Reminder</h3>
+          <p>
+            Ensure all published information, project reports,
+            photographs and announcements are accurate and
+            authorised before making them public.
+          </p>
+        </div>
+
+      </section>
+
+
+      <!-- BIOGRAPHY -->
+
+      <section class="section" id="biography">
+
+        <div class="section-title">
+          <h2>Manage Biography</h2>
+          <p>Update the representative's profile information.</p>
+        </div>
+
+        <div class="panel">
+
+          <form id="biographyForm">
+
+            <label>Full Name</label>
+            <input
+              type="text"
+              id="bioName"
+              value="Hon. Akarachi Amadi"
+              required
+            >
+
+            <label>Official Position</label>
+            <input
+              type="text"
+              id="bioPosition"
+              value="Member, Federal House of Representatives"
+            >
+
+            <label>Constituency</label>
+            <input
+              type="text"
+              id="bioConstituency"
+              value="Mbaitoli/Ikeduru Federal Constituency, Imo State"
+            >
+
+            <label>Biography</label>
+            <textarea id="bioText" rows="10">Hon. Akarachi Amadi is a Nigerian politician and member of the Federal House of Representatives, representing the Mbaitoli/Ikeduru Federal Constituency of Imo State, Nigeria.
+
+He emerged as a member of the National Assembly following the 2023 general elections, where he secured the mandate to represent the people of Mbaitoli and Ikeduru Federal Constituency.
+
+As a federal lawmaker, Akarachi Amadi is involved in legislative activities, national policy discussions and the representation of his constituents.</textarea>
+
+            <label>Profile Photograph</label>
+            <input type="file" id="bioPhoto" accept="image/*">
+            <img class="image-preview" id="bioPreview" alt="Profile preview">
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">
+                Save Biography
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECTS -->
+
+      <section class="section" id="projects">
+
+        <div class="section-title">
+          <h2>Project Management</h2>
+          <p>Add, edit and manage constituency development projects.</p>
+        </div>
+
+        <div class="notice">
+          Add verified project information. Select the correct
+          project status and upload genuine photographs.
+        </div>
+
+        <div class="panel">
+
+          <h3 id="projectFormTitle">Upload New Project</h3>
+
+          <form id="projectForm">
+
+            <input type="hidden" id="projectEditIndex" value="-1">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label>Project Title</label>
+                <input
+                  type="text"
+                  id="projectTitle"
+                  placeholder="Enter project title"
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label>Project Category</label>
+                <select id="projectCategory" required>
+                  <option value="">Select category</option>
+                  <option>Road Construction</option>
+                  <option>Education</option>
+                  <option>Healthcare</option>
+                  <option>Youth Empowerment</option>
+                  <option>Agriculture</option>
+                  <option>Community Development</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Project Location</label>
+                <select id="projectLocation" required>
+                  <option value="">Select location</option>
+                  <option>Mbaitoli</option>
+                  <option>Ikeduru</option>
+                  <option>Both Mbaitoli and Ikeduru</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Project Status</label>
+                <select id="projectStatus" required>
+                  <option value="">Select status</option>
+                  <option>Proposed</option>
+                  <option>Ongoing</option>
+                  <option>Completed</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Project Date</label>
+                <input type="date" id="projectDate">
+              </div>
+
+              <div class="form-group">
+                <label>Project Photograph</label>
+                <input
+                  type="file"
+                  id="projectImage"
+                  accept="image/*"
+                >
+                <img class="image-preview" id="projectPreview" alt="Project preview">
+              </div>
+
+              <div class="form-group full">
+                <label>Project Description</label>
+                <textarea
+                  id="projectDescription"
+                  placeholder="Describe the project..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group full">
+                <label>Publication Status</label>
+                <select id="projectPublished">
+                  <option value="yes">Published</option>
+                  <option value="no">Unpublished</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">
+                Save Project
+              </button>
+
+              <button
+                class="secondary-btn"
+                type="button"
+                onclick="resetProjectForm()"
+              >
+                Clear Form
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="panel">
+
+          <h3>Uploaded Projects</h3>
+
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Location</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Published</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="projectTable">
+                <tr>
+                  <td colspan="6">No projects added yet.</td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- VISION AND MISSION -->
+
+      <section class="section" id="vision">
+
+        <div class="section-title">
+          <h2>Vision & Mission</h2>
+          <p>Manage the website's vision, mission and priorities.</p>
+        </div>
+
+        <div class="panel">
+
+          <form id="visionForm">
+
+            <label>Vision Statement</label>
+            <textarea id="visionText">A prosperous, inclusive and developed Mbaitoli/Ikeduru Federal Constituency where every community has access to opportunities and essential services.</textarea>
+
+            <label>Mission Statement</label>
+            <textarea id="missionText">To promote effective representation, responsible leadership, community development and initiatives that improve the lives of constituents.</textarea>
+
+            <label>Development Priorities</label>
+            <textarea id="prioritiesText">Infrastructure development
+Education and skills development
+Healthcare access
+Youth empowerment
+Agriculture and economic opportunities
+Community development</textarea>
+
+            <button class="primary-btn" type="submit">
+              Save Vision & Mission
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- NEWS -->
+
+      <section class="section" id="news">
+
+        <div class="section-title">
+          <h2>News & Updates</h2>
+          <p>Create and publish official news articles and announcements.</p>
+        </div>
+
+        <div class="panel">
+
+          <h3 id="newsFormTitle">Create News Article</h3>
+
+          <form id="newsForm">
+
+            <input type="hidden" id="newsEditIndex" value="-1">
+
+            <label>Article Headline</label>
+            <input
+              type="text"
+              id="newsTitle"
+              placeholder="Enter news headline"
+              required
+            >
+
+            <label>News Category</label>
+            <select id="newsCategory" required>
+              <option value="">Select category</option>
+              <option>Official Announcement</option>
+              <option>Constituency Update</option>
+              <option>Legislative Update</option>
+              <option>Community Engagement</option>
+              <option>Press Release</option>
+              <option>Other</option>
+            </select>
+
+            <label>Publication Date</label>
+            <input type="date" id="newsDate">
+
+            <label>Featured Image</label>
+            <input type="file" id="newsImage" accept="image/*">
+            <img class="image-preview" id="newsPreview" alt="News image preview">
+
+            <label>Article Content</label>
+            <textarea
+              id="newsContent"
+              placeholder="Write the full news article..."
+              required
+            ></textarea>
+
+            <label>Publication Status</label>
+            <select id="newsPublished">
+              <option value="yes">Published</option>
+              <option value="no">Unpublished</option>
+            </select>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">
+                Save News Article
+              </button>
+
+              <button
+                class="secondary-btn"
+                type="button"
+                onclick="resetNewsForm()"
+              >
+                Clear Form
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="panel">
+
+          <h3>News Articles</h3>
+
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Headline</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Published</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="newsTable">
+                <tr>
+                  <td colspan="5">No articles added yet.</td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- GALLERY -->
+
+      <section class="section" id="gallery">
+
+        <div class="section-title">
+          <h2>Photo Gallery Management</h2>
+          <p>Upload and manage photographs for the public gallery.</p>
+        </div>
+
+        <div class="panel">
+
+          <h3 id="galleryFormTitle">Upload Photographs</h3>
+
+          <form id="galleryForm">
+
+            <input type="hidden" id="galleryEditIndex" value="-1">
+
+            <label>Photo Title / Caption</label>
+            <input
+              type="text"
+              id="galleryTitle"
+              placeholder="Enter photo caption"
+              required
+            >
+
+            <label>Event Category</label>
+            <select id="galleryCategory">
+              <option>Community Engagement</option>
+              <option>Official Visit</option>
+              <option>Project Inspection</option>
+              <option>Public Event</option>
+              <option>Other</option>
+            </select>
+
+            <label>Event Date</label>
+            <input type="date" id="galleryDate">
+
+            <label>Select Photograph</label>
+            <input
+              type="file"
+              id="galleryImage"
+              accept="image/*"
+            >
+
+            <img class="image-preview" id="galleryPreview" alt="Gallery image preview">
+
+            <label>Description</label>
+            <textarea
+              id="galleryDescription"
+              placeholder="Add a short description..."
+            ></textarea>
+
+            <label>Publication Status</label>
+            <select id="galleryPublished">
+              <option value="yes">Published</option>
+              <option value="no">Unpublished</option>
+            </select>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">
+                Save Photograph
+              </button>
+
+              <button
+                class="secondary-btn"
+                type="button"
+                onclick="resetGalleryForm()"
+              >
+                Clear Form
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="panel">
+
+          <h3>Uploaded Photographs</h3>
+
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Caption</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Published</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="galleryTable">
+                <tr>
+                  <td colspan="5">No photographs added yet.</td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MESSAGES -->
+
+      <section class="section" id="messages">
+
+        <div class="section-title">
+          <h2>Contact Messages</h2>
+          <p>Messages submitted by visitors through the Contact page.</p>
+        </div>
+
+        <div class="notice">
+          Messages will appear here after the contact form is connected
+          to a database or email service.
+        </div>
+
+        <div class="panel">
+
+          <h3>Received Messages</h3>
+
+          <div class="table-wrap">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+
+              <tbody id="messageTable">
+                <tr>
+                  <td colspan="5">No messages available.</td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- WEBSITE SETTINGS -->
+
+      <section class="section" id="settings">
+
+        <div class="section-title">
+          <h2>Website Settings</h2>
+          <p>Manage basic public website information.</p>
+        </div>
+
+        <div class="panel">
+
+          <form id="settingsForm">
+
+            <label>Website Name</label>
+            <input
+              type="text"
+              id="siteName"
+              value="Hon. Akarachi Amadi"
+            >
+
+            <label>Website Description</label>
+            <textarea id="siteDescription">Official website of Hon. Akarachi Amadi, representing Mbaitoli/Ikeduru Federal Constituency, Imo State.</textarea>
+
+            <label>Official Contact Email</label>
+            <input
+              type="email"
+              id="siteEmail"
+              placeholder="Enter official email address"
+            >
+
+            <label>Official Phone Number</label>
+            <input
+              type="tel"
+              id="sitePhone"
+              placeholder="Enter official phone number"
+            >
+
+            <label>Office Address</label>
+            <textarea
+              id="siteAddress"
+              placeholder="Enter official office address"
+            ></textarea>
+
+            <label>WhatsApp Number</label>
+            <input
+              type="tel"
+              id="siteWhatsapp"
+              placeholder="Enter WhatsApp number with country code"
+            >
+
+            <button class="primary-btn" type="submit">
+              Save Website Settings
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script>
+
+/* DEMO AUTHENTICATION
+   Replace with Supabase Auth before production.
+*/
+
+const DEMO_EMAIL = "admin@example.com";
+const DEMO_PASSWORD = "Admin123!";
+
+const loginScreen = document.getElementById("loginScreen");
+const dashboard = document.getElementById("dashboard");
+
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+
+    sessionStorage.setItem("demoAdminLoggedIn", "true");
+
+    showDashboard();
+
+  } else {
+
+    document.getElementById("loginMessage").textContent =
+      "Incorrect email or password.";
+
+  }
+
+});
+
+function showDashboard() {
+  loginScreen.style.display = "none";
+  dashboard.style.display = "block";
+}
+
+if (sessionStorage.getItem("demoAdminLoggedIn") === "true") {
+  showDashboard();
+}
+
+document.getElementById("logoutBtn").addEventListener("click", function() {
+  sessionStorage.removeItem("demoAdminLoggedIn");
+  location.reload();
+});
+
+
+/* SIDEBAR NAVIGATION */
+
+const navigationButtons = document.querySelectorAll(".sidebar button[data-section]");
+const sections = document.querySelectorAll(".section");
+
+navigationButtons.forEach(button => {
+
+  button.addEventListener("click", function() {
+
+    const target = this.dataset.section;
+
+    navigationButtons.forEach(btn => btn.classList.remove("active"));
+    sections.forEach(section => section.classList.remove("active"));
+
+    this.classList.add("active");
+    document.getElementById(target).classList.add("active");
+
+    const titles = {
+      overview: "Dashboard Overview",
+      biography: "Biography Management",
+      projects: "Project Management",
+      vision: "Vision & Mission",
+      news: "News & Updates",
+      gallery: "Photo Gallery",
+      messages: "Contact Messages",
+      settings: "Website Settings"
+    };
+
+    document.getElementById("pageTitle").textContent = titles[target];
+
+  });
+
+});
+
+
+/* DEMO DATA
+   All records are kept in memory only.
+   Refreshing the page clears them.
+*/
+
+let projects = [];
+let news = [];
+let gallery = [];
+
+
+/* IMAGE HANDLING */
+
+function readImage(file, callback) {
+
+  if (!file) {
+    callback(null);
+    return;
+  }
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select a valid image file.");
+    callback(null);
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    alert("Image must be 5MB or smaller.");
+    callback(null);
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+    callback(event.target.result);
+  };
+
+  reader.onerror = function() {
+    alert("Unable to read the selected image.");
+    callback(null);
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+
+function previewImage(inputId, previewId) {
+
+  document.getElementById(inputId).addEventListener("change", function() {
+
+    const file = this.files[0];
+    const preview = document.getElementById(previewId);
+
+    if (!file) {
+      preview.style.display = "none";
+      return;
+    }
+
+    readImage(file, function(result) {
+
+      if (!result) {
+        preview.style.display = "none";
+        return;
+      }
+
+      preview.src = result;
+      preview.style.display = "block";
+
+    });
+
+  });
+
+}
+
+previewImage("bioPhoto", "bioPreview");
+previewImage("projectImage", "projectPreview");
+previewImage("newsImage", "newsPreview");
+previewImage("galleryImage", "galleryPreview");
+
+
+/* COUNTERS */
+
+function updateCounters() {
+
+  document.getElementById("projectCount").textContent = projects.length;
+
+  document.getElementById("newsCount").textContent = news.length;
+
+  document.getElementById("photoCount").textContent = gallery.length;
+
+  document.getElementById("messageCount").textContent = "0";
+
+}
+
+
+/* BIOGRAPHY */
+
+document.getElementById("biographyForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  alert("Biography updated in this demonstration only. Database connection is still required.");
+
+});
+
+
+/* PROJECT MANAGEMENT */
+
+document.getElementById("projectForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const file = document.getElementById("projectImage").files[0];
+
+  const editIndex = Number(document.getElementById("projectEditIndex").value);
+
+  const existingImage = editIndex >= 0 ? projects[editIndex].image : null;
+
+  readImage(file, function(image) {
+
+    const project = {
+
+      title: document.getElementById("projectTitle").value.trim(),
+
+      category: document.getElementById("projectCategory").value,
+
+      location: document.getElementById("projectLocation").value,
+
+      status: document.getElementById("projectStatus").value,
+
+      date: document.getElementById("projectDate").value,
+
+      description: document.getElementById("projectDescription").value.trim(),
+
+      published: document.getElementById("projectPublished").value,
+
+      image: image || existingImage
+
+    };
+
+    if (editIndex >= 0) {
+
+      projects[editIndex] = project;
+
+    } else {
+
+      projects.push(project);
+
+    }
+
+    resetProjectForm();
+    renderProjects();
+    updateCounters();
+
+    alert("Project saved in this demonstration. Permanent storage will be added with Supabase.");
+
+  });
+
+});
+
+
+function renderProjects() {
+
+  const table = document.getElementById("projectTable");
+
+  table.innerHTML = "";
+
+  if (!projects.length) {
+    table.innerHTML = '<tr><td colspan="6">No projects added yet.</td></tr>';
+    return;
+  }
+
+  projects.forEach((project, index) => {
+
+    const row = document.createElement("tr");
+
+    const values = [
+      project.title,
+      project.location,
+      project.category,
+      project.status,
+      project.published === "yes" ? "Yes" : "No"
+    ];
+
+    values.forEach(value => {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.appendChild(cell);
+    });
+
+    const actions = document.createElement("td");
+
+    const edit = document.createElement("button");
+    edit.className = "secondary-btn";
+    edit.textContent = "Edit";
+    edit.onclick = () => editProject(index);
+
+    const remove = document.createElement("button");
+    remove.className = "danger-btn";
+    remove.textContent = "Delete";
+    remove.onclick = () => deleteProject(index);
+
+    actions.append(edit, remove);
+    row.appendChild(actions);
+
+    table.appendChild(row);
+
+  });
+
+}
+
+
+function editProject(index) {
+
+  const project = projects[index];
+
+  document.getElementById("projectEditIndex").value = index;
+
+  document.getElementById("projectTitle").value = project.title;
+  document.getElementById("projectCategory").value = project.category;
+  document.getElementById("projectLocation").value = project.location;
+  document.getElementById("projectStatus").value = project.status;
+  document.getElementById("projectDate").value = project.date;
+  document.getElementById("projectDescription").value = project.description;
+  document.getElementById("projectPublished").value = project.published;
+
+  if (project.image) {
+    const preview = document.getElementById("projectPreview");
+    preview.src = project.image;
+    preview.style.display = "block";
+  }
+
+  document.getElementById("projectFormTitle").textContent = "Edit Project";
+
+  document.getElementById("projectForm").scrollIntoView({behavior: "smooth"});
+
+}
+
+
+function deleteProject(index) {
+
+  if (!confirm("Are you sure you want to delete this project?")) return;
+
+  projects.splice(index, 1);
+
+  renderProjects();
+  updateCounters();
+
+}
+
+
+function resetProjectForm() {
+
+  document.getElementById("projectForm").reset();
+
+  document.getElementById("projectEditIndex").value = -1;
+
+  document.getElementById("projectFormTitle").textContent = "Upload New Project";
+
+  document.getElementById("projectPreview").style.display = "none";
+
+}
+
+
+/* NEWS MANAGEMENT */
+
+document.getElementById("newsForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const file = document.getElementById("newsImage").files[0];
+
+  const editIndex = Number(document.getElementById("newsEditIndex").value);
+
+  const existingImage = editIndex >= 0 ? news[editIndex].image : null;
+
+  readImage(file, function(image) {
+
+    const article = {
+
+      title: document.getElementById("newsTitle").value.trim(),
+
+      category: document.getElementById("newsCategory").value,
+
+      date: document.getElementById("newsDate").value,
+
+      content: document.getElementById("newsContent").value.trim(),
+
+      published: document.getElementById("newsPublished").value,
+
+      image: image || existingImage
+
+    };
+
+    if (editIndex >= 0) {
+
+      news[editIndex] = article;
+
+    } else {
+
+      news.push(article);
+
+    }
+
+    resetNewsForm();
+    renderNews();
+    updateCounters();
+
+    alert("News article saved in this demonstration only.");
+
+  });
+
+});
+
+
+function renderNews() {
+
+  const table = document.getElementById("newsTable");
+
+  table.innerHTML = "";
+
+  if (!news.length) {
+    table.innerHTML = '<tr><td colspan="5">No articles added yet.</td></tr>';
+    return;
+  }
+
+  news.forEach((article, index) => {
+
+    const row = document.createElement("tr");
+
+    [article.title, article.category, article.date,
+      article.published === "yes" ? "Yes" : "No"
+    ].forEach(value => {
+
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.appendChild(cell);
+
+    });
+
+    const actions = document.createElement("td");
+
+    const edit = document.createElement("button");
+    edit.className = "secondary-btn";
+    edit.textContent = "Edit";
+    edit.onclick = () => editNews(index);
+
+    const remove = document.createElement("button");
+    remove.className = "danger-btn";
+    remove.textContent = "Delete";
+    remove.onclick = () => deleteNews(index);
+
+    actions.append(edit, remove);
+    row.appendChild(actions);
+
+    table.appendChild(row);
+
+  });
+
+}
+
+
+function editNews(index) {
+
+  const article = news[index];
+
+  document.getElementById("newsEditIndex").value = index;
+
+  document.getElementById("newsTitle").value = article.title;
+  document.getElementById("newsCategory").value = article.category;
+  document.getElementById("newsDate").value = article.date;
+  document.getElementById("newsContent").value = article.content;
+  document.getElementById("newsPublished").value = article.published;
+
+  if (article.image) {
+    const preview = document.getElementById("newsPreview");
+    preview.src = article.image;
+    preview.style.display = "block";
+  }
+
+  document.getElementById("newsFormTitle").textContent = "Edit News Article";
+
+  document.getElementById("newsForm").scrollIntoView({behavior: "smooth"});
+
+}
+
+
+function deleteNews(index) {
+
+  if (!confirm("Delete this news article?")) return;
+
+  news.splice(index, 1);
+
+  renderNews();
+  updateCounters();
+
+}
+
+
+function resetNewsForm() {
+
+  document.getElementById("newsForm").reset();
+
+  document.getElementById("newsEditIndex").value = -1;
+
+  document.getElementById("newsFormTitle").textContent = "Create News Article";
+
+  document.getElementById("newsPreview").style.display = "none";
+
+}
+
+
+/* GALLERY MANAGEMENT */
+
+document.getElementById("galleryForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const file = document.getElementById("galleryImage").files[0];
+
+  const editIndex = Number(document.getElementById("galleryEditIndex").value);
+
+  const existingImage = editIndex >= 0 ? gallery[editIndex].image : null;
+
+  if (!file && !existingImage) {
+    alert("Please select a photograph.");
+    return;
+  }
+
+  readImage(file, function(image) {
+
+    const photo = {
+
+      title: document.getElementById("galleryTitle").value.trim(),
+
+      category: document.getElementById("galleryCategory").value,
+
+      date: document.getElementById("galleryDate").value,
+
+      description: document.getElementById("galleryDescription").value.trim(),
+
+      published: document.getElementById("galleryPublished").value,
+
+      image: image || existingImage
+
+    };
+
+    if (editIndex >= 0) {
+
+      gallery[editIndex] = photo;
+
+    } else {
+
+      gallery.push(photo);
+
+    }
+
+    resetGalleryForm();
+    renderGallery();
+    updateCounters();
+
+    alert("Photograph saved in this demonstration only.");
+
+  });
+
+});
+
+
+function renderGallery() {
+
+  const table = document.getElementById("galleryTable");
+
+  table.innerHTML = "";
+
+  if (!gallery.length) {
+    table.innerHTML = '<tr><td colspan="5">No photographs added yet.</td></tr>';
+    return;
+  }
+
+  gallery.forEach((photo, index) => {
+
+    const row = document.createElement("tr");
+
+    [
+      photo.title,
+      photo.category,
+      photo.date,
+      photo.published === "yes" ? "Yes" : "No"
+    ].forEach(value => {
+
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.appendChild(cell);
+
+    });
+
+    const actions = document.createElement("td");
+
+    const edit = document.createElement("button");
+    edit.className = "secondary-btn";
+    edit.textContent = "Edit";
+    edit.onclick = () => editGallery(index);
+
+    const remove = document.createElement("button");
+    remove.className = "danger-btn";
+    remove.textContent = "Delete";
+    remove.onclick = () => deleteGallery(index);
+
+    actions.append(edit, remove);
+    row.appendChild(actions);
+
+    table.appendChild(row);
+
+  });
+
+}
+
+
+function editGallery(index) {
+
+  const photo = gallery[index];
+
+  document.getElementById("galleryEditIndex").value = index;
+
+  document.getElementById("galleryTitle").value = photo.title;
+  document.getElementById("galleryCategory").value = photo.category;
+  document.getElementById("galleryDate").value = photo.date;
+  document.getElementById("galleryDescription").value = photo.description;
+  document.getElementById("galleryPublished").value = photo.published;
+
+  if (photo.image) {
+    const preview = document.getElementById("galleryPreview");
+    preview.src = photo.image;
+    preview.style.display = "block";
+  }
+
+  document.getElementById("galleryFormTitle").textContent = "Edit Photograph";
+
+  document.getElementById("galleryForm").scrollIntoView({behavior: "smooth"});
+
+}
+
+
+function deleteGallery(index) {
+
+  if (!confirm("Delete this photograph?")) return;
+
+  gallery.splice(index, 1);
+
+  renderGallery();
+  updateCounters();
+
+}
+
+
+function resetGalleryForm() {
+
+  document.getElementById("galleryForm").reset();
+
+  document.getElementById("galleryEditIndex").value = -1;
+
+  document.getElementById("galleryFormTitle").textContent = "Upload Photographs";
+
+  document.getElementById("galleryPreview").style.display = "none";
+
+}
+
+
+/* VISION AND MISSION */
+
+document.getElementById("visionForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  alert("Vision and mission updated in this demonstration only.");
+
+});
+
+
+/* WEBSITE SETTINGS */
+
+document.getElementById("settingsForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  alert("Website settings updated in this demonstration only.");
+
+});
+
+
+/* INITIALISE */
+
+renderProjects();
+renderNews();
+renderGallery();
+updateCounters();
+
+</script>
+
+</body>
+</html>
