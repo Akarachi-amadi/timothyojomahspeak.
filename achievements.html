@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Verified achievements, milestones and constituency development updates for Hon. Akarachi Amadi, representing Mbaitoli/Ikeduru Federal Constituency.">
+  <title>Achievements | Hon. Akarachi Amadi</title>
+
+  <style>
+    :root {
+      --green: #08783e;
+      --dark-green: #064b2b;
+      --gold: #d9a520;
+      --red: #c90019;
+      --light: #f5f8f5;
+      --white: #ffffff;
+      --text: #26332b;
+      --muted: #68746c;
+      --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--white);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topbar {
+      background: var(--dark-green);
+      color: var(--white);
+      padding: 9px 5%;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .welcome {
+      overflow: hidden;
+      white-space: nowrap;
+      background: var(--red);
+      color: var(--white);
+      padding: 12px 0;
+      border-bottom: 3px solid var(--gold);
+      font-weight: bold;
+    }
+
+    .welcome-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scrollWelcome 32s linear infinite;
+    }
+
+    .welcome-track span {
+      color: #ffdf63;
+    }
+
+    @keyframes scrollWelcome {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    header {
+      background: var(--white);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+
+    .brand-mark {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--gold);
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--dark-green);
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .brand-text small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: bold;
+      color: #26332b;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--green);
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(4, 65, 35, 0.88), rgba(4, 65, 35, 0.88)),
+        url("https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero .eyebrow {
+      color: #ffdc70;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 55px);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: auto;
+      font-size: 17px;
+      color: #f1f6f2;
+    }
+
+    .hero-line {
+      width: 75px;
+      height: 4px;
+      background: var(--gold);
+      margin: 22px auto;
+      border-radius: 5px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 5%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading .tag {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .section-heading h2 {
+      color: var(--dark-green);
+      font-size: clamp(26px, 4vw, 36px);
+      margin: 8px 0 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .intro {
+      background: var(--light);
+    }
+
+    .intro-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .intro-content p {
+      margin-bottom: 15px;
+      color: #4d5b51;
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .achievement-card {
+      background: var(--white);
+      border: 1px solid #e4ebe5;
+      border-radius: 12px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .achievement-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #e8f4ec;
+      color: var(--green);
+      font-size: 25px;
+      margin-bottom: 18px;
+    }
+
+    .achievement-card h3 {
+      color: var(--dark-green);
+      margin-bottom: 10px;
+      font-size: 19px;
+    }
+
+    .achievement-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .empty-state {
+      text-align: center;
+      background: var(--light);
+      border: 1px dashed #b9cabb;
+      border-radius: 12px;
+      padding: 45px 25px;
+      max-width: 850px;
+      margin: 30px auto 0;
+    }
+
+    .empty-state .empty-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .empty-state h3 {
+      color: var(--dark-green);
+      margin-bottom: 10px;
+    }
+
+    .empty-state p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .impact {
+      background: var(--dark-green);
+      color: var(--white);
+    }
+
+    .impact .section-heading h2 {
+      color: var(--white);
+    }
+
+    .impact .section-heading p {
+      color: #dce9df;
+    }
+
+    .impact .section-heading .tag {
+      color: #ffdc70;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .impact-card {
+      text-align: center;
+      padding: 25px 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .impact-card .symbol {
+      font-size: 30px;
+      color: #ffdc70;
+      margin-bottom: 10px;
+    }
+
+    .impact-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .impact-card p {
+      font-size: 13px;
+      color: #dce9df;
+    }
+
+    .records {
+      background: var(--light);
+    }
+
+    .records-box {
+      max-width: 850px;
+      margin: auto;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .records-box h3 {
+      color: var(--dark-green);
+      margin-bottom: 12px;
+    }
+
+    .records-box p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .records-box ul {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .records-box li {
+      margin-bottom: 8px;
+    }
+
+    .callout {
+      background: #fff8e7;
+      border-left: 5px solid var(--gold);
+      padding: 22px;
+      border-radius: 5px;
+      margin-top: 25px;
+    }
+
+    .callout strong {
+      color: var(--dark-green);
+    }
+
+    .callout p {
+      margin-top: 5px;
+      color: #5e5848;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 65px 20px;
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .cta h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 22px;
+      color: #e8f3eb;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--gold);
+      color: #17251b;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0c64c;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: #032f1b;
+      color: var(--white);
+      padding: 45px 5% 18px;
+    }
+
+    .footer-content {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 35px;
+      padding-bottom: 30px;
+    }
+
+    footer h3 {
+      color: #ffdc70;
+      margin-bottom: 14px;
+      font-size: 17px;
+    }
+
+    footer p,
+    footer a {
+      color: #d4e1d7;
+      font-size: 13px;
+    }
+
+    footer a {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    footer a:hover {
+      color: #ffdc70;
+    }
+
+    .copyright {
+      max-width: 1150px;
+      margin: auto;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      padding-top: 17px;
+      text-align: center;
+      color: #c6d5ca;
+      font-size: 12px;
+    }
+
+    @media (max-width: 950px) {
+      .nav-container {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .achievement-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .topbar {
+        font-size: 11px;
+      }
+
+      .nav-container {
+        padding: 13px 4%;
+      }
+
+      nav {
+        gap: 10px 14px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 75px 18px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .container {
+        padding: 50px 5%;
+      }
+
+      .achievement-grid,
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .records-box {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .welcome-track {
+        animation: none;
+        padding-left: 10px;
+        white-space: normal;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    Official Website | Hon. Akarachi Amadi | Mbaitoli/Ikeduru Federal Constituency, Imo State
+  </div>
+
+  <div class="welcome">
+    <div class="welcome-track">
+      <span>IKEDURU CORP MEMBERS (NYSC)</span> — Welcome to the official website of Hon. Akarachi Amadi, Member representing Mbaitoli/Ikeduru Federal Constituency, Imo State, Nigeria. This platform provides updates on our activities, projects, achievements, vision and commitment to the development of our constituency.
+    </div>
+  </div>
+
+  <header>
+    <div class="nav-container">
+
+      <a href="index.html" class="brand">
+        <div class="brand-mark">AA</div>
+        <div class="brand-text">
+          <strong>HON. AKARACHI AMADI</strong>
+          <small>Mbaitoli/Ikeduru Federal Constituency</small>
+        </div>
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="constituency.html">Constituency</a>
+        <a href="legislative.html">Legislative</a>
+        <a href="projects.html">Projects</a>
+        <a href="achievements.html" class="active">Achievements</a>
+        <a href="vision.html">Vision &amp; Mission</a>
+        <a href="news.html">News</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Service • Representation • Development</div>
+    <h1>Achievements &amp; Milestones</h1>
+    <div class="hero-line"></div>
+    <p>
+      A dedicated space for documenting verified milestones, completed programmes
+      and development initiatives connected with the representation of
+      Mbaitoli/Ikeduru Federal Constituency.
+    </p>
+  </section>
+
+  <section class="intro">
+    <div class="container">
+      <div class="intro-content">
+        <div class="section-heading">
+          <span class="tag">Accountability and public service</span>
+          <h2>Recognising Progress Through Evidence</h2>
+        </div>
+
+        <p>
+          Public service should be measured through meaningful work, responsible
+          representation and outcomes that improve people's lives.
+        </p>
+
+        <p>
+          This page is intended to provide residents of Mbaitoli and Ikeduru
+          with a clear record of verified achievements and milestones associated
+          with constituency representation.
+        </p>
+
+        <p>
+          Information will be published here when supporting details and
+          documentation are available for public review.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-heading">
+      <span class="tag">Areas of public record</span>
+      <h2>Achievement Categories</h2>
+      <p>
+        These categories provide a structure for presenting documented
+        activities. They are not claims that specific achievements have
+        already occurred.
+      </p>
+    </div>
+
+    <div class="achievement-grid">
+
+      <article class="achievement-card">
+        <div class="achievement-icon">🏗️</div>
+        <h3>Infrastructure Development</h3>
+        <p>
+          Verified records of completed or ongoing infrastructure initiatives,
+          including their locations, delivery status and supporting evidence.
+        </p>
+      </article>
+
+      <article class="achievement-card">
+        <div class="achievement-icon">🎓</div>
+        <h3>Education Support</h3>
+        <p>
+          Documented education-related interventions, learning support,
+          school improvements and other verified educational programmes.
+        </p>
+      </article>
+
+      <article class="achievement-card">
+        <div class="achievement-icon">🏥</div>
+        <h3>Healthcare Initiatives</h3>
+        <p>
+          Confirmed healthcare programmes, medical outreach activities
+          and health-related interventions with verifiable details.
+        </p>
+      </article>
+
+      <article class="achievement-card">
+        <div class="achievement-icon">👥</div>
+        <h3>Youth and Community Development</h3>
+        <p>
+          Verified youth development, skills acquisition, empowerment
+          and community support initiatives.
+        </p>
+      </article>
+
+      <article class="achievement-card">
+        <div class="achievement-icon">📜</div>
+        <h3>Legislative Contributions</h3>
+        <p>
+          Documented legislative activities, motions, bills, committee work
+          and other contributions supported by official records.
+        </p>
+      </article>
+
+      <article class="achievement-card">
+        <div class="achievement-icon">🤝</div>
+        <h3>Constituency Engagement</h3>
+        <p>
+          Verified consultations, public engagements, community meetings
+          and constituency representation activities.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="impact">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Constituency impact</span>
+        <h2>Development Priorities</h2>
+        <p>
+          The following areas can be used to organise future achievement
+          reports once specific programmes and outcomes have been verified.
+        </p>
+      </div>
+
+      <div class="impact-grid">
+
+        <div class="impact-card">
+          <div class="symbol">🏫</div>
+          <h3>Education</h3>
+          <p>Educational access, facilities and learning opportunities.</p>
+        </div>
+
+        <div class="impact-card">
+          <div class="symbol">🩺</div>
+          <h3>Healthcare</h3>
+          <p>Healthcare access and community health support.</p>
+        </div>
+
+        <div class="impact-card">
+          <div class="symbol">🛣️</div>
+          <h3>Infrastructure</h3>
+          <p>Roads, public facilities and essential infrastructure.</p>
+        </div>
+
+        <div class="impact-card">
+          <div class="symbol">🌱</div>
+          <h3>Economic Opportunity</h3>
+          <p>Skills, enterprise and sustainable livelihood opportunities.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-heading">
+      <span class="tag">Verified updates</span>
+      <h2>Published Achievements</h2>
+      <p>
+        This section will display confirmed achievements and milestones
+        when verified records have been added to the website.
+      </p>
+    </div>
+
+    <div class="empty-state">
+      <div class="empty-icon">📋</div>
+      <h3>Achievement Records Coming Soon</h3>
+      <p>
+        No verified achievement records have been published on this page yet.
+        Please check back for documented updates, including project details,
+        dates, locations, photographs and relevant supporting information.
+      </p>
+    </div>
+  </section>
+
+  <section class="records">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Transparency</span>
+        <h2>Documentation and Evidence</h2>
+        <p>
+          Reliable public information helps constituents understand
+          what has been done and what remains to be done.
+        </p>
+      </div>
+
+      <div class="records-box">
+        <h3>What Published Records Should Include</h3>
+        <p>
+          To make achievement updates useful and accountable, each published
+          record should include relevant information such as:
+        </p>
+
+        <ul>
+          <li>Name and description of the programme, activity or milestone.</li>
+          <li>Location within Mbaitoli, Ikeduru or both communities.</li>
+          <li>Date or period of implementation.</li>
+          <li>Current status, where applicable.</li>
+          <li>Photographs or other supporting documentation.</li>
+          <li>Relevant official references or project information.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Our commitment to accurate information</strong>
+          <p>
+            Only information that has been checked and approved for publication
+            should appear as an official achievement. Proposed activities
+            should not be presented as completed projects.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Stay Connected With Constituency Updates</h2>
+    <p>
+      Follow the website for verified information about projects,
+      legislative activities, public engagements and development updates
+      concerning Mbaitoli/Ikeduru Federal Constituency.
+    </p>
+    <a href="news.html">View News &amp; Updates</a>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+
+      <div>
+        <h3>Hon. Akarachi Amadi</h3>
+        <p>
+          Member representing Mbaitoli/Ikeduru Federal Constituency,
+          Imo State, Nigeria.
+        </p>
+        <p style="margin-top: 12px;">
+          This website provides information about representation,
+          legislative activities and constituency development.
+        </p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="constituency.html">Constituency</a>
+        <a href="legislative.html">Legislative Activities</a>
+        <a href="projects.html">Projects</a>
+        <a href="achievements.html">Achievements</a>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <a href="vision.html">Vision &amp; Mission</a>
+        <a href="news.html">News &amp; Updates</a>
+        <a href="gallery.html">Photo Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      &copy; <span id="year"></span> Hon. Akarachi Amadi.
+      All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
