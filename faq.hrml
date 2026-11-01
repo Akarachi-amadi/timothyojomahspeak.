@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frequently asked questions about Hon. Akarachi Amadi and Mbaitoli/Ikeduru Federal Constituency.">
+  <title>Frequently Asked Questions | Hon. Akarachi Amadi</title>
+
+  <style>
+    :root {
+      --green: #08743b;
+      --dark-green: #064d2b;
+      --gold: #d6a62e;
+      --red: #c90019;
+      --light: #f5f8f5;
+      --text: #26332b;
+      --muted: #68746c;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* Welcome ticker */
+    .welcome {
+      background: var(--red);
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .welcome-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 27s linear infinite;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .welcome strong {
+      color: #ffe18a;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Header and navigation */
+    header {
+      background: white;
+      box-shadow: 0 3px 12px rgba(0,0,0,.07);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1250px;
+      margin: auto;
+      padding: 15px 4%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--dark-green);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    .brand span {
+      display: block;
+      color: #777;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    nav a {
+      color: #26332b;
+      font-size: 13px;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--green);
+    }
+
+    /* Admin Login button */
+    nav a.admin-login {
+      background: var(--gold);
+      color: var(--dark-green);
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 800;
+      border: 1px solid var(--gold);
+    }
+
+    nav a.admin-login:hover {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(120deg, var(--dark-green), var(--green));
+      color: white;
+      text-align: center;
+      padding: 75px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #e8f4eb;
+    }
+
+    /* Main content */
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 55px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      color: var(--dark-green);
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* FAQ accordion */
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #e2e9e3;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,.035);
+    }
+
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: white;
+      color: var(--dark-green);
+      text-align: left;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .faq-question:hover {
+      background: #f4f9f5;
+    }
+
+    .faq-question .icon {
+      font-size: 23px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 20px;
+      color: #56635a;
+      font-size: 14px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-question {
+      background: #f4f9f5;
+    }
+
+    /* Contact box */
+    .contact-box {
+      margin-top: 45px;
+      padding: 35px 25px;
+      text-align: center;
+      background: #eaf4ed;
+      border-left: 5px solid var(--gold);
+      border-radius: 10px;
+    }
+
+    .contact-box h2 {
+      color: var(--dark-green);
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      padding: 12px 23px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: var(--dark-green);
+    }
+
+    /* Footer */
+    footer {
+      background: #092e1c;
+      color: #e4eee7;
+      padding: 35px 5%;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      margin: 5px 0;
+    }
+
+    .footer-links {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: #f2d27d;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 900px) {
+      .nav-container {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 55px 18px;
+      }
+
+      .faq-question {
+        font-size: 14px;
+        padding: 17px;
+      }
+
+      .container {
+        padding: 40px 0;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Scrolling Welcome Message -->
+  <div class="welcome">
+    <div class="welcome-track">
+      <strong>IKEDURU CORP MEMBERS (NYSC)</strong> — Welcome to the official website of Hon. Akarachi Amadi, Member representing Mbaitoli/Ikeduru Federal Constituency, Imo State, Nigeria. This platform provides updates on our activities, projects, achievements, vision and commitment to the development of our constituency.
+    </div>
+  </div>
+
+  <!-- Website Header -->
+  <header>
+    <div class="nav-container">
+
+      <a href="index.html" class="brand">
+        HON. AKARACHI AMADI
+        <span>Mbaitoli/Ikeduru Federal Constituency</span>
+      </a>
+
+      <nav>
+        <a href="admin.html" class="admin-login">ADMIN LOGIN</a>
+        <a href="index.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="constituency.html">Constituency</a>
+        <a href="projects.html">Projects</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="legislative.html">Legislative</a>
+        <a href="vision.html">Vision</a>
+        <a href="news.html">News</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="press.html">Press</a>
+        <a href="faq.html" class="active">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Frequently Asked Questions</h1>
+    <p>
+      Find answers to common questions about Hon. Akarachi Amadi,
+      his representation and Mbaitoli/Ikeduru Federal Constituency.
+    </p>
+  </section>
+
+  <!-- FAQ Content -->
+  <main class="container">
+
+    <div class="section-heading">
+      <h2>How Can We Help You?</h2>
+      <p>Browse the questions below to learn more.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Who is Hon. Akarachi Amadi?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Hon. Akarachi Amadi is a Nigerian politician who represents
+          Mbaitoli/Ikeduru Federal Constituency of Imo State in the
+          Federal House of Representatives. For more information,
+          visit the Biography page.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Which communities does the constituency cover?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          The federal constituency comprises Mbaitoli and Ikeduru
+          Local Government Areas in Imo State, Nigeria. Visit the
+          Constituency page for more information.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Where can I find information about constituency projects?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Visit the Projects page for project information and updates.
+          Project details should be published with accurate descriptions,
+          locations, photographs and implementation status.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How can I check the representative's achievements?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Visit the Achievements page. Verified information and supporting
+          details can be published there as they become available.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Where can I read about legislative activities?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          The Legislative Activities page is intended to provide updates
+          about relevant bills, motions, debates, oversight activities
+          and other legislative records. Specific records should be
+          verified before publication.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How can I get the latest news and announcements?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Visit the News and Press pages for published news, official
+          statements, announcements and media updates.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can I view photographs of activities and events?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Yes. Visit the Gallery page to view photographs and other
+          approved media uploaded to the website.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How can I send an enquiry or feedback?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Visit the Contact page to find the available contact options.
+          Please provide clear and accurate information when making
+          an enquiry.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How can I stay informed about updates?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Check the News, Press and Gallery pages regularly for new
+          information published on the website.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How can I correct information published on this website?
+          <span class="icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          Please use the Contact page to report inaccurate or outdated
+          information. Include the page name and the details that need
+          attention so the information can be reviewed.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contact Call to Action -->
+    <section class="contact-box">
+      <h2>Still Have Questions?</h2>
+
+      <p>
+        If you cannot find the information you need, visit our Contact
+        page to see the available ways to get in touch.
+      </p>
+
+      <a href="contact.html" class="btn">Go to Contact Page</a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+
+    <p><strong>HON. AKARACHI AMADI</strong></p>
+
+    <p>Mbaitoli/Ikeduru Federal Constituency, Imo State, Nigeria.</p>
+
+    <div class="footer-links">
+      <a href="admin.html">Admin Login</a>
+      <a href="index.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="constituency.html">Constituency</a>
+      <a href="projects.html">Projects</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="legislative.html">Legislative</a>
+      <a href="vision.html">Vision</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="press.html">Press</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <p>
+      &copy; <span id="year"></span> Hon. Akarachi Amadi.
+      All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+
+    // FAQ accordion functionality
+    document.querySelectorAll(".faq-question").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const item = button.parentElement;
+        const isOpen = item.classList.contains("open");
+
+        // Close all FAQ items
+        document.querySelectorAll(".faq-item").forEach(faq => {
+
+          faq.classList.remove("open");
+
+          faq.querySelector(".faq-question")
+            .setAttribute("aria-expanded", "false");
+
+          faq.querySelector(".icon").textContent = "+";
+
+        });
+
+        // Open selected FAQ item
+        if (!isOpen) {
+
+          item.classList.add("open");
+
+          button.setAttribute("aria-expanded", "true");
+
+          button.querySelector(".icon").textContent = "−";
+
+        }
+
+      });
+
+    });
+
+    // Automatically update copyright year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
