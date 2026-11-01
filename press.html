@@ -83,9 +83,9 @@
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1250px;
       margin: auto;
-      padding: 14px 5%;
+      padding: 14px 4%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -128,7 +128,7 @@
       align-items: center;
       justify-content: flex-end;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 13px;
     }
 
     nav a {
@@ -141,6 +141,18 @@
     nav a:hover,
     nav a.active {
       color: var(--green);
+    }
+
+    .dashboard-link {
+      background: var(--green);
+      color: white !important;
+      padding: 9px 13px;
+      border-radius: 5px;
+    }
+
+    .dashboard-link:hover {
+      background: var(--dark-green);
+      color: white !important;
     }
 
     .hero {
@@ -305,7 +317,6 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 25px;
-      align-items: stretch;
     }
 
     .guideline-box {
@@ -423,6 +434,11 @@
       color: #ffdc70;
     }
 
+    .footer-dashboard {
+      color: #ffdc70 !important;
+      font-weight: bold;
+    }
+
     .copyright {
       max-width: 1150px;
       margin: auto;
@@ -532,6 +548,7 @@
         <a href="press.html" class="active">Press &amp; Media</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
+        <a href="admin.html" class="dashboard-link">Admin Dashboard</a>
       </nav>
 
     </div>
@@ -763,6 +780,7 @@
         <a href="press.html">Press &amp; Media</a>
         <a href="gallery.html">Photo Gallery</a>
         <a href="contact.html">Contact</a>
+        <a href="admin.html" class="footer-dashboard">Admin Dashboard →</a>
       </div>
 
     </div>
