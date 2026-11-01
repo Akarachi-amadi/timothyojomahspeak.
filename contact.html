@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | Engr. Akarachi Amadi 2027</title>
+
+<style>
+:root {
+    --green: #08783e;
+    --dark: #064d2a;
+    --gold: #d6a928;
+    --light: #f4f8f5;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--light);
+    color: #222;
+    line-height: 1.6;
+}
+
+header {
+    background: var(--green);
+    color: white;
+    padding: 17px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(120deg, var(--dark), var(--green));
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 45px);
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 17px;
+}
+
+/* MAIN */
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+    padding: 55px 0;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--green);
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+/* CONTACT GRID */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 30px;
+}
+
+/* CONTACT INFORMATION */
+
+.contact-info {
+    background: var(--dark);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contact-info h2 {
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.contact-info > p {
+    margin-bottom: 25px;
+    color: #e0eee5;
+}
+
+.info-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.info-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 19px;
+}
+
+.info-item h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.info-item p,
+.info-item a {
+    color: #e0eee5;
+    font-size: 14px;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+/* SOCIAL LINKS */
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.social-links a {
+    text-decoration: none;
+    background: white;
+    color: var(--dark);
+    padding: 9px 13px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.social-links a:hover {
+    background: var(--gold);
+}
+
+/* CONTACT FORM */
+
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.contact-form h2 {
+    color: var(--green);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 13px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 13px;
+    margin-top: 7px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: var(--green);
+    color: white;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: var(--dark);
+}
+
+.form-message {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    background: #e5f2e8;
+    color: var(--dark);
+}
+
+/* MAP */
+
+.map-section {
+    background: white;
+    padding: 45px 6%;
+    text-align: center;
+}
+
+.map-box {
+    max-width: 1000px;
+    height: 300px;
+    margin: 25px auto 0;
+    background: #e5eee7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--green);
+    border-radius: 9px;
+    color: var(--dark);
+    padding: 20px;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* WHATSAPP FLOAT BUTTON */
+
+.whatsapp {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 3px 12px rgba(0,0,0,.2);
+    z-index: 50;
+}
+
+.whatsapp:hover {
+    background: #128c45;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 800px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+}
+
+@media(max-width: 500px) {
+    .container {
+        width: 92%;
+        padding: 35px 0;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 22px;
+    }
+
+    .whatsapp {
+        bottom: 15px;
+        right: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">AKARACHI AMADI 2027</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="biography.html">Biography</a>
+        <a href="projects.html">Projects</a>
+        <a href="vision.html">Vision</a>
+        <a href="news.html">News</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Contact Us</h1>
+
+    <p>
+        We welcome your questions, suggestions,
+        feedback and enquiries.
+    </p>
+
+</section>
+
+
+<!-- CONTACT SECTION -->
+
+<main class="container">
+
+    <h2 class="section-title">Get In Touch</h2>
+
+    <p class="section-subtitle">
+        Your voice matters. We welcome constructive engagement
+        and conversations about the future of Mbaitoli.
+    </p>
+
+
+    <div class="contact-grid">
+
+
+        <!-- CONTACT INFORMATION -->
+
+        <div class="contact-info">
+
+            <h2>Contact Information</h2>
+
+            <p>
+                Connect with the official communication team
+                of Engr. Akarachi Amadi.
+            </p>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">📍</div>
+
+                <div>
+                    <h3>Office Address</h3>
+                    <p>Official office address to be provided.</p>
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">📞</div>
+
+                <div>
+                    <h3>Phone Number</h3>
+                    <p>Add official contact number.</p>
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">✉️</div>
+
+                <div>
+                    <h3>Email Address</h3>
+                    <p>Add official email address.</p>
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">🌐</div>
+
+                <div>
+                    <h3>Website</h3>
+                    <p>Official website of Engr. Akarachi Amadi.</p>
+                </div>
+
+            </div>
+
+
+            <h3 style="color:var(--gold);margin-top:25px;">
+                Follow Our Updates
+            </h3>
+
+
+            <div class="social-links">
+
+                <a href="#" target="_blank">Facebook</a>
+
+                <a href="#" target="_blank">Instagram</a>
+
+                <a href="#" target="_blank">X</a>
+
+                <a href="#" target="_blank">YouTube</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTACT FORM -->
+
+        <div class="contact-form">
+
+            <h2>Send Us A Message</h2>
+
+            <form id="contactForm">
+
+                <label>Full Name</label>
+
+                <input type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required>
+
+
+                <label>Email Address</label>
+
+                <input type="email"
+                    id="email"
+                    placeholder="Enter your email address"
+                    required>
+
+
+                <label>Phone Number</label>
+
+                <input type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number">
+
+
+                <label>Subject</label>
+
+                <select id="subject" required>
+
+                    <option value="">Select enquiry subject</option>
+
+                    <option>General Enquiry</option>
+
+                    <option>Community Development</option>
+
+                    <option>Partnership</option>
+
+                    <option>Media Enquiry</option>
+
+                    <option>Suggestion</option>
+
+                    <option>Other</option>
+
+                </select>
+
+
+                <label>Your Message</label>
+
+                <textarea id="message"
+                    placeholder="Write your message here..."
+                    required></textarea>
+
+
+                <button type="submit" class="submit-btn">
+                    Send Message
+                </button>
+
+                <div class="form-message" id="formMessage"></div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- MAP SECTION -->
+
+<section class="map-section">
+
+    <h2 class="section-title">Our Location</h2>
+
+    <p>
+        Our official office location will be displayed here.
+    </p>
+
+    <div class="map-box">
+
+        <p>
+            📍 Google Maps location will be integrated
+            after the official office address is provided.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2027 Engr. Akarachi Amadi.
+        All Rights Reserved.
+    </p>
+
+    <p>
+        Mbaitoli Federal Constituency.
+    </p>
+
+</footer>
+
+
+<!-- WHATSAPP BUTTON -->
+
+<a href="https://wa.me/2340000000000"
+   class="whatsapp"
+   target="_blank"
+   rel="noopener">
+    WhatsApp Us
+</a>
+
+
+<script>
+
+// ===================================
+// CONTACT FORM DEMONSTRATION
+// ===================================
+
+// This form currently validates visitor
+// input but does not store or send messages.
+// Backend connection will be added later.
+
+document.getElementById("contactForm").addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+
+        const email = document.getElementById("email").value.trim();
+
+        const message = document.getElementById("message").value.trim();
+
+        const output = document.getElementById("formMessage");
+
+        if (!name || !email || !message) {
+
+            output.style.display = "block";
+            output.textContent = "Please complete all required fields.";
+
+            return;
+        }
+
+        output.style.display = "block";
+
+        output.textContent =
+            "Thank you, " + name +
+            ". The contact form is ready. Message delivery will be activated after backend integration.";
+
+        this.reset();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
