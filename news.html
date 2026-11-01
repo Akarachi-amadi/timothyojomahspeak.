@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official news, announcements and constituency updates from Hon. Akarachi Amadi.">
+  <title>News & Updates | Hon. Akarachi Amadi</title>
+
+  <style>
+    :root {
+      --green: #08783e;
+      --dark-green: #04552d;
+      --gold: #d6a928;
+      --light: #f5f8f5;
+      --text: #26332b;
+      --muted: #68756c;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 15px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+    }
+
+    nav a {
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--gold);
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,70,35,.89), rgba(0,70,35,.89)),
+        url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 17px;
+    }
+
+    .gold-line {
+      width: 75px;
+      height: 4px;
+      background: var(--gold);
+      margin: 20px auto;
+      border-radius: 5px;
+    }
+
+    .container {
+      width: 86%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 65px 0 35px;
+    }
+
+    .intro h2 {
+      color: var(--dark-green);
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .intro p {
+      max-width: 750px;
+      margin: auto;
+      color: var(--muted);
+    }
+
+    .news-section {
+      padding: 20px 0 75px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,.07);
+      transition: transform .3s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .news-content {
+      padding: 22px;
+    }
+
+    .category {
+      display: inline-block;
+      background: #e4f3e9;
+      color: var(--green);
+      padding: 5px 11px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .news-content h3 {
+      color: var(--dark-green);
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .news-content p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .news-date {
+      display: block;
+      color: #89948c;
+      font-size: 12px;
+      margin-top: 15px;
+    }
+
+    .empty-state {
+      background: white;
+      border: 1px dashed #b8c9bc;
+      border-radius: 12px;
+      padding: 55px 25px;
+      text-align: center;
+      max-width: 750px;
+      margin: 20px auto;
+    }
+
+    .empty-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .empty-state h3 {
+      color: var(--dark-green);
+      margin-bottom: 10px;
+      font-size: 23px;
+    }
+
+    .empty-state p {
+      color: var(--muted);
+      max-width: 550px;
+      margin: auto;
+    }
+
+    .cta {
+      background: var(--dark-green);
+      color: white;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .cta h2 {
+      font-size: 29px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      max-width: 650px;
+      margin: 0 auto 22px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: var(--gold);
+      color: #183322;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #033c20;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 13px;
+    }
+
+    footer span {
+      color: var(--gold);
+    }
+
+    @media(max-width: 850px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 600px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 75px 20px;
+      }
+
+      .hero h1 {
+        font-size: 31px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      HON. <span>AKARACHI AMADI</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="projects.html">Projects</a>
+      <a href="vision.html">Vision & Mission</a>
+      <a href="news.html" class="active">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>News & Updates</h1>
+    <div class="gold-line"></div>
+    <p>
+      Official announcements, constituency activities,
+      press releases and important updates concerning
+      Mbaitoli/Ikeduru Federal Constituency.
+    </p>
+  </section>
+
+  <section class="intro container">
+    <h2>Latest News & Announcements</h2>
+    <div class="gold-line"></div>
+    <p>
+      Stay informed about official activities, community
+      engagements, legislative updates and development
+      initiatives.
+    </p>
+  </section>
+
+  <section class="news-section container">
+
+    <!-- FUTURE SUPABASE INTEGRATION:
+
+      Articles created through admin.html will appear here.
+
+      Planned fields:
+      - News headline
+      - Article content
+      - Featured image
+      - News category
+      - Publication date
+      - Author
+      - Published / Unpublished
+
+      Only published articles will be displayed publicly.
+    -->
+
+    <div id="news-grid" class="news-grid">
+      <!-- Dynamically published news articles will appear here. -->
+    </div>
+
+    <div id="empty-state" class="empty-state">
+      <div class="empty-icon">📰</div>
+      <h3>No News Articles Yet</h3>
+      <p>
+        Official news, announcements and constituency updates
+        will appear here when they are published through
+        the website's Admin Dashboard.
+      </p>
+    </div>
+
+  </section>
+
+  <section class="cta">
+    <h2>Stay Informed and Connected</h2>
+    <p>
+      Follow official updates and stay connected with activities
+      across Mbaitoli and Ikeduru Federal Constituency.
+    </p>
+    <a href="contact.html">Contact the Office</a>
+  </section>
+
+  <footer>
+    <p>
+      &copy; 2026 Hon. Akarachi Amadi. All Rights Reserved.
+    </p>
+    <p>
+      Representing <span>Mbaitoli/Ikeduru Federal Constituency</span>,
+      Imo State.
+    </p>
+  </footer>
+
+</body>
+</html>
